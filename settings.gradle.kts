@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Profile App Compose"
-include ':app'
+include(":app")
