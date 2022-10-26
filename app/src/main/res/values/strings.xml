@@ -4,4 +4,7 @@
     <string name="friends_list">Friends List</string>
     <string name="home">Home</string>
     <string name="detail_profile">Detail Profile</string>
+    <string name="thumbnail_home_profile_image">Thumbnail profile image</string>
+    <string name="location_icon">Location icon</string>
+    <string name="data_not_found">Data not found</string>
 </resources>

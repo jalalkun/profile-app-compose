@@ -1,4 +1,4 @@
-package com.jalalkun.profileappcompose.friends_list
+package com.jalalkun.profileappcompose.ui.friends_list
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable

@@ -1,5 +1,6 @@
 package com.jalalkun.profileappcompose
 
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -17,11 +18,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.jalalkun.profileappcompose.detail_profile.DetailProfileScreen
-import com.jalalkun.profileappcompose.friends_list.FriendsListScreen
-import com.jalalkun.profileappcompose.home.HomeScreen
-import com.jalalkun.profileappcompose.navigation.MainNavigation
-import com.jalalkun.profileappcompose.profile.ProfileScreen
+import com.jalalkun.profileappcompose.data.model.DataProfile
+import com.jalalkun.profileappcompose.ui.detail_profile.DetailProfileScreen
+import com.jalalkun.profileappcompose.ui.friends_list.FriendsListScreen
+import com.jalalkun.profileappcompose.ui.home.HomeScreen
+import com.jalalkun.profileappcompose.ui.navigation.MainNavigation
+import com.jalalkun.profileappcompose.ui.profile.ProfileScreen
 import com.jalalkun.profileappcompose.ui.theme.ProfileAppComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -62,7 +64,9 @@ private fun InitNavigation() {
                         selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
                         onClick = {
                             navController.navigate(screen.route) {
-                                if (screen.route == MainNavigation.Home.route)popUpTo(MainNavigation.ProfileDetail.route)
+                                if (screen.route == MainNavigation.Home.route) popUpTo(
+                                    MainNavigation.ProfileDetail.route
+                                )
                                 popUpTo(navController.graph.findStartDestination().id) {
                                     saveState = true
                                 }
@@ -83,13 +87,20 @@ private fun InitNavigation() {
             composable(MainNavigation.Home.route) { HomeScreen(navController = navController) }
             composable(MainNavigation.FriendsList.route) { FriendsListScreen(navController) }
             composable(MainNavigation.Profile.route) { ProfileScreen(navController) }
-            composable(MainNavigation.ProfileDetail.route) {
-                it.arguments?.getString("userId")?.let { it1 ->
+            composable(
+                MainNavigation.ProfileDetail.route
+            ) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    it.arguments?.getParcelable("userId", DataProfile::class.java)
+                } else {
+                    it.arguments?.getParcelable("userId")
+                }?.let { data ->
                     DetailProfileScreen(
                         navController = navController,
-                        userId = it1
+                        dataProfile = data
                     )
                 }
+
             }
         }
     }

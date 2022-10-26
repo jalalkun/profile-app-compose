@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -20,11 +21,19 @@ android {
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+            buildConfigField(String::class.java.simpleName,"BASE_URL", "\"https://randomuser.me/\"")
+        }
+        debug {
+            buildConfigField(String::class.java.simpleName,"BASE_URL", "\"https://randomuser.me/\"")
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -59,4 +68,28 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling:1.3.0")
     debugImplementation("androidx.compose.ui:ui-test-manifest:1.3.0")
     implementation("androidx.navigation:navigation-compose:2.5.3")
+
+    implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
+
+    implementation("com.google.code.gson:gson:2.10")
+
+    // Thread
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+
+    // Image Processing
+    implementation("io.coil-kt:coil-compose:2.2.2")
+
+    // DI
+    implementation("io.insert-koin:koin-android:3.3.0")
+    implementation("io.insert-koin:koin-core:3.2.2")
+    implementation("io.insert-koin:koin-androidx-compose:3.3.0")
+
+    // Network
+    debugImplementation("com.github.chuckerteam.chucker:library:3.5.2")
+    releaseImplementation("com.github.chuckerteam.chucker:library-no-op:3.5.2")
+
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.6")
+    implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.6")
 }
