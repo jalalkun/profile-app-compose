@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Street(
     @SerializedName("name")
-    val name: String? = "",
+    val name: String?,
     @SerializedName("number")
-    val number: Int? = 0
+    val number: Int?
 ): Parcelable

@@ -8,17 +8,17 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Login(
     @SerializedName("md5")
-    val md5: String? = "",
+    val md5: String?,
     @SerializedName("password")
-    val password: String? = "",
+    val password: String?,
     @SerializedName("salt")
-    val salt: String? = "",
+    val salt: String?,
     @SerializedName("sha1")
-    val sha1: String? = "",
+    val sha1: String?,
     @SerializedName("sha256")
-    val sha256: String? = "",
+    val sha256: String?,
     @SerializedName("username")
-    val username: String? = "",
+    val username: String?,
     @SerializedName("uuid")
-    val uuid: String? = ""
+    val uuid: String?
 ): Parcelable

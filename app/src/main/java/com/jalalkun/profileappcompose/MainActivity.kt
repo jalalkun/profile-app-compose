@@ -1,7 +1,7 @@
 package com.jalalkun.profileappcompose
 
-import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,7 +18,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.jalalkun.profileappcompose.data.model.DataProfile
+import com.google.gson.Gson
+import com.jalalkun.profileappcompose.data.model.DetailProfile
 import com.jalalkun.profileappcompose.ui.detail_profile.DetailProfileScreen
 import com.jalalkun.profileappcompose.ui.friends_list.FriendsListScreen
 import com.jalalkun.profileappcompose.ui.home.HomeScreen
@@ -90,16 +91,14 @@ private fun InitNavigation() {
             composable(
                 MainNavigation.ProfileDetail.route
             ) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                    it.arguments?.getParcelable("userId", DataProfile::class.java)
-                } else {
-                    it.arguments?.getParcelable("userId")
-                }?.let { data ->
-                    DetailProfileScreen(
-                        navController = navController,
-                        dataProfile = data
-                    )
-                }
+                val user = it.arguments?.getString("userId")
+                Log.e("MainActivity", "InitNavigation: navback user id $user")
+                DetailProfileScreen(detailProfile = Gson().fromJson(user, DetailProfile::class.java))
+//                it.arguments?.getString("userId").let { data ->
+//                    DetailProfileScreen(
+//                        dataProfile = Gson().fromJson(data, DataProfile::class.java)
+//                    )
+//                }
 
             }
         }

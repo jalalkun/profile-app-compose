@@ -8,17 +8,17 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Location(
     @SerializedName("city")
-    val city: String? = "",
+    val city: String?,
     @SerializedName("coordinates")
-    val coordinates: Coordinates? = Coordinates(),
+    val coordinates: Coordinates?,
     @SerializedName("country")
-    val country: String? = "",
+    val country: String?,
     @SerializedName("postcode")
-    val postcode: String? = "",
+    val postcode: String?,
     @SerializedName("state")
-    val state: String? = "",
+    val state: String?,
     @SerializedName("street")
-    val street: Street? = Street(),
+    val street: Street?,
     @SerializedName("timezone")
-    val timezone: Timezone? = Timezone()
+    val timezone: Timezone?
 ): Parcelable

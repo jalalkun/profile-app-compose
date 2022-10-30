@@ -8,27 +8,27 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class DataProfile(
     @SerializedName("cell")
-    val cell: String? = "",
+    val cell: String?,
     @SerializedName("dob")
-    val dob: Dob? = Dob(),
+    val dob: Dob?,
     @SerializedName("email")
-    val email: String? = "",
+    val email: String?,
     @SerializedName("gender")
-    val gender: String? = "",
+    val gender: String?,
     @SerializedName("id")
-    val id: Id? = Id(),
+    val id: Id?,
     @SerializedName("location")
-    val location: Location? = Location(),
+    val location: Location?,
     @SerializedName("login")
-    val login: Login? = Login(),
+    val login: Login?,
     @SerializedName("name")
-    val name: Name? = Name(),
+    val name: Name?,
     @SerializedName("nat")
-    val nat: String? = "",
+    val nat: String?,
     @SerializedName("phone")
-    val phone: String? = "",
+    val phone: String?,
     @SerializedName("picture")
-    val picture: Picture? = Picture(),
+    val picture: Picture?,
     @SerializedName("registered")
-    val registered: Registered? = Registered()
+    val registered: Registered?
 ): Parcelable

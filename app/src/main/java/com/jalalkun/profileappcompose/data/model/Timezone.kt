@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Timezone(
     @SerializedName("description")
-    val description: String? = "",
+    val description: String?,
     @SerializedName("offset")
-    val offset: String? = ""
+    val offset: String?
 ): Parcelable

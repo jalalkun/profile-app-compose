@@ -8,9 +8,9 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Name(
     @SerializedName("first")
-    val first: String? = "",
+    val first: String?,
     @SerializedName("last")
-    val last: String? = "",
+    val last: String?,
     @SerializedName("title")
-    val title: String? = ""
+    val title: String?
 ): Parcelable

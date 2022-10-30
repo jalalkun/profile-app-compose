@@ -2,10 +2,7 @@ package com.jalalkun.profileappcompose.ui.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material3.ElevatedCard
@@ -23,7 +20,8 @@ import com.jalalkun.profileappcompose.data.model.DataProfile
 @Composable
 fun CardProfile(dataProfile: DataProfile, myClick: () -> Unit) {
     ElevatedCard(
-        modifier = Modifier.padding(5.dp)
+        modifier = Modifier
+            .padding(5.dp)
             .clickable {
                 myClick()
             }
@@ -33,11 +31,11 @@ fun CardProfile(dataProfile: DataProfile, myClick: () -> Unit) {
         ) {
             val (photo, name, location, imageLocation) = createRefs()
             AsyncImage(
-                model = dataProfile.picture?.thumbnail,
+                model = dataProfile.picture?.medium,
                 contentDescription = stringResource(id = R.string.thumbnail_home_profile_image),
                 modifier = Modifier
-                    .widthIn(min = 50.dp, max = 150.dp)
-                    .heightIn(min = 50.dp, max = 150.dp)
+                    .width(100.dp)
+                    .height(100.dp)
                     .constrainAs(photo) {
                         top.linkTo(parent.top)
                         start.linkTo(parent.start)
@@ -76,7 +74,7 @@ fun CardProfile(dataProfile: DataProfile, myClick: () -> Unit) {
                 style = MaterialTheme.typography.bodySmall,
                 modifier = Modifier
                     .padding(start = 4.dp)
-                    .constrainAs(location){
+                    .constrainAs(location) {
                         start.linkTo(imageLocation.end)
                         top.linkTo(name.bottom)
                         bottom.linkTo(parent.bottom)

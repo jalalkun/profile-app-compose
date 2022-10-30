@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Coordinates(
     @SerializedName("latitude")
-    val latitude: String? = "",
+    val latitude: String?,
     @SerializedName("longitude")
-    val longitude: String? = ""
+    val longitude: String?
 ): Parcelable

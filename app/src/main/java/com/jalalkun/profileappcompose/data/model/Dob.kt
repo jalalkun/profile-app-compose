@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Dob(
     @SerializedName("age")
-    val age: Int? = 0,
+    val age: Int?,
     @SerializedName("date")
-    val date: String? = ""
+    val date: String?
 ): Parcelable

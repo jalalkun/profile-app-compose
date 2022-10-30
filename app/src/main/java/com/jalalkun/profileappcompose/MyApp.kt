@@ -2,6 +2,7 @@ package com.jalalkun.profileappcompose
 
 import android.app.Application
 import com.jalalkun.profileappcompose.data.module.apiModule
+import com.jalalkun.profileappcompose.data.module.databaseModule
 import com.jalalkun.profileappcompose.data.module.repositoryModule
 import com.jalalkun.profileappcompose.data.module.viewModelModule
 import com.jalalkun.profileappcompose.data.network.RetrofitModule.retrofitModule
@@ -17,11 +18,11 @@ class MyApp: Application() {
             androidLogger(Level.DEBUG)
             androidContext(this@MyApp)
             modules(listOf(
-                //databaseModule,
-                viewModelModule,
-                apiModule,
                 repositoryModule,
-                retrofitModule
+                databaseModule,
+                apiModule,
+                retrofitModule,
+                viewModelModule,
             ))
         }
     }

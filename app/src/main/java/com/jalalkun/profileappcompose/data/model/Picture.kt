@@ -8,9 +8,9 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Picture(
     @SerializedName("large")
-    val large: String? = "",
+    val large: String?,
     @SerializedName("medium")
-    val medium: String? = "",
+    val medium: String?,
     @SerializedName("thumbnail")
-    val thumbnail: String? = ""
+    val thumbnail: String?
 ): Parcelable
