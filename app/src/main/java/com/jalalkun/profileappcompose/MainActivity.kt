@@ -32,13 +32,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ProfileAppComposeTheme(dynamicColor = false) {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    InitNavigation()
-                }
+                InitNavigation()
             }
         }
     }
@@ -93,13 +87,12 @@ private fun InitNavigation() {
             ) {
                 val user = it.arguments?.getString("userId")
                 Log.e("MainActivity", "InitNavigation: navback user id $user")
-                DetailProfileScreen(detailProfile = Gson().fromJson(user, DetailProfile::class.java))
-//                it.arguments?.getString("userId").let { data ->
-//                    DetailProfileScreen(
-//                        dataProfile = Gson().fromJson(data, DataProfile::class.java)
-//                    )
-//                }
-
+                DetailProfileScreen(
+                    detailProfile = Gson().fromJson(
+                        user,
+                        DetailProfile::class.java
+                    )
+                )
             }
         }
     }

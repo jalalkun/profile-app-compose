@@ -10,12 +10,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import coil.compose.AsyncImage
 import com.jalalkun.profileappcompose.R
 import com.jalalkun.profileappcompose.data.model.DataProfile
+import com.jalalkun.profileappcompose.utils.NoImage
 
 @Composable
 fun CardProfile(dataProfile: DataProfile, myClick: () -> Unit) {
@@ -40,7 +42,8 @@ fun CardProfile(dataProfile: DataProfile, myClick: () -> Unit) {
                         top.linkTo(parent.top)
                         start.linkTo(parent.start)
                         bottom.linkTo(parent.bottom)
-                    }
+                    },
+                placeholder = NoImage()
             )
 
             Text(

@@ -16,6 +16,7 @@ class ProfileRepository(private val usersService: UsersService) {
                 size = size,
                 page = page
             ).results
+            kotlinx.coroutines.delay(2000)
             emit(Resource.Success(response))
         }catch (e: HttpException){
             emit(Resource.Error("Error ${e.message()}"))

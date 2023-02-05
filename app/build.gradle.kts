@@ -2,7 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-parcelize")
-    id("com.google.devtools.ksp") version "1.7.20-1.0.7"
+    id("com.google.devtools.ksp").version("1.8.10-1.0.9")
 }
 
 android {
@@ -46,7 +46,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.3.2"
+        kotlinCompilerExtensionVersion = "1.4.0"
     }
     packagingOptions {
         resources {
@@ -59,20 +59,20 @@ dependencies {
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
     implementation("androidx.activity:activity-compose:1.6.1")
-    implementation("androidx.compose.ui:ui:1.3.0")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.3.0")
-    implementation("androidx.compose.material3:material3:1.0.0")
+    implementation("androidx.compose.ui:ui:1.3.3")
+    implementation("androidx.compose.ui:ui-tooling-preview:1.3.3")
+    implementation("androidx.compose.material3:material3:1.0.1")
     testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.3.0")
-    debugImplementation("androidx.compose.ui:ui-tooling:1.3.0")
-    debugImplementation("androidx.compose.ui:ui-test-manifest:1.3.0")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.3.3")
+    debugImplementation("androidx.compose.ui:ui-tooling:1.3.3")
+    debugImplementation("androidx.compose.ui:ui-test-manifest:1.3.3")
     implementation("androidx.navigation:navigation-compose:2.5.3")
 
     implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
 
-    implementation("com.google.code.gson:gson:2.10")
+    implementation("com.google.code.gson:gson:2.10.1")
 
     // Thread
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
@@ -81,9 +81,9 @@ dependencies {
     implementation("io.coil-kt:coil-compose:2.2.2")
 
     // DI
-    implementation("io.insert-koin:koin-android:3.3.0")
-    implementation("io.insert-koin:koin-core:3.2.2")
-    implementation("io.insert-koin:koin-androidx-compose:3.3.0")
+    implementation("io.insert-koin:koin-android:3.3.2")
+    implementation("io.insert-koin:koin-core:3.3.2")
+    implementation("io.insert-koin:koin-androidx-compose:3.4.1")
 
     // Network
     debugImplementation("com.github.chuckerteam.chucker:library:3.5.2")
@@ -94,6 +94,6 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.6")
 
     // DB
-    ksp("androidx.room:room-compiler:2.4.3")
-    implementation("androidx.room:room-ktx:2.4.3")
+    ksp("androidx.room:room-compiler:2.5.0")
+    implementation("androidx.room:room-ktx:2.5.0")
 }

@@ -29,17 +29,14 @@ fun HomeScreen(
     profileViewModel: ProfileViewModel = koinViewModel()
 ) {
     val listProfile = profileViewModel.profilesFlow.collectAsState().value
-    val coroutine = rememberCoroutineScope()
     LaunchedEffect(key1 = Unit, block = {
-        if (profileViewModel.dataProfiles.isEmpty())profileViewModel.getProfiles()
+        if (profileViewModel.dataProfiles.isEmpty()) profileViewModel.getProfiles()
     })
 
     when (listProfile) {
         is Resource.Error -> {
             ErrorAlert(message = listProfile.message) {
-                coroutine.launch {
-                    profileViewModel.dismissError()
-                }
+                profileViewModel.dismissError()
             }
         }
         is Resource.Success<*> -> {
@@ -81,12 +78,23 @@ private fun HomeContent(
                         Log.e("MainNavigation", "toDetailProfile: ")
                         val detailProfile =
                             DetailProfile(
-                                name = "%s, %s %s".format(profile.name?.title, profile.name?.first, profile.name?.last),
+                                name = "%s, %s %s".format(
+                                    profile.name?.title,
+                                    profile.name?.first,
+                                    profile.name?.last
+                                ),
                                 phoneNumber = profile.phone.toString(),
                                 email = profile.email.toString(),
-                                address = "%s %s %s".format(profile.location?.street, profile.location?.city, profile.location?.state),
+                                address = "%s %s %s".format(
+                                    profile.location?.street,
+                                    profile.location?.city,
+                                    profile.location?.state
+                                ),
                                 birthday = profile.dob?.date.toString(),
-                                picture = URLEncoder.encode(profile.picture?.large.toString(), StandardCharsets.UTF_8.toString())
+                                picture = URLEncoder.encode(
+                                    profile.picture?.large.toString(),
+                                    StandardCharsets.UTF_8.toString()
+                                )
                             )
                         navController.toDetailProfile(detailProfile)
                     }

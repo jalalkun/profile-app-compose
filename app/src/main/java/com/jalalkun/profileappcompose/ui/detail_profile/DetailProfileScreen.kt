@@ -14,6 +14,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import coil.compose.AsyncImage
 import com.jalalkun.profileappcompose.R
 import com.jalalkun.profileappcompose.data.model.DetailProfile
+import com.jalalkun.profileappcompose.utils.NoImage
 
 @Composable
 fun DetailProfileScreen(detailProfile: DetailProfile) {
@@ -56,7 +57,8 @@ private fun Content(detailProfile: DetailProfile) {
                         start.linkTo(parent.start)
                         end.linkTo(parent.end)
                         top.linkTo(parent.top)
-                    }
+                    },
+                placeholder = NoImage()
             )
 
             Column(
